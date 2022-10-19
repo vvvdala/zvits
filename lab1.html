@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<meta charset="UTF-8">
+		<title>Лабораторна робота №1</title>
+
+
+	</head>
+	<body>
+	
+		<input type="checkbox" id="menu-trigger" class="menu-trigger">
+   <label for="menu-trigger"></label>
+        <div class="menu">
+            <ul class="menu">
+                <li><a class="button" href="main.html">Головна сторінка</a></li>
+                <li><a  class="button_current" href="lab1.html">Лабораторна робота №1</a></li>
+                <li><a  class="button" href="lab2.html">Лабораторна робота №2</a></li>
+                <li><a  class="button" href="lab3.html">Лабораторна робота №3</a></li>
+                <li><a  class="button" href="lab4.html">Лабораторна робота №4</a></li>
+                <li><a  class="button" href="lab5.html">Лабораторна робота №5</a></li>
+                <li><a  class="button" href="lab6.html">Лабораторна робота №6</a></li>
+                <li><a  class="button" href="lab7.html">Лабораторна робота №7</a></li>
+                <li><a  class="button" href="lab8.html">Лабораторна робота №8</a></li>
+                <li><a  class="button" href="lab9.html">Лабораторна робота №9</a></li>
+                <li><a  class="button" href="lab10.html">Лабораторна робота №10</a></li>
+                <li><a  class="button" href="lab11.html">Лабораторна робота №11</a></li>
+                <li><a  class="button" href="IndProject.html">Індивідуальний проект</a></li>
+              </ul>
+            </div>
+			
+	 <div class="content">
+            
+                <p><h2 align="center">Умова задачі</h2></p>
+                
+            </div>
+            <div class="content">
+        <p><h3 align="center">Завдання №1</h3></p>
+        <p><h5 align="center">За даними, що  введені з клавіатури в оперативну
+             пам’ять, визначити значення  виразу, використовуючи математичні функції,
+              і вивести результат на екран</h5></p>    
+            </div>
+            <div class="content">
+                <p><h3 align="center">Завдання №2</h3></p>
+                <p><h5 align="center">Написати програму, що розв'язує задачу з математики
+                     та фізики шкільногого курсу</h5></p>              
+            </div>
+		 <div class="content"> 
+        <p><h2 align="center">Аналіз задачі</h2></p>
+		<p>Для виконання першого завдання необхідно створити достатню кількість змінних після чого ввести їх з клавіатури
+    Далі необхідно створити змінну результату після чого присвоїти їй значення за формулою що нам дали в умові.
+    <img src="laB1/task1.png">
+</p>
+<p>Для виконання другого завдання необхідно розв'язати фізичні задачу за допомогою формули та потім написати для неї програму.
+    <img src="laB1/task2.png"> 
+</p>
+</div>
+<div class="content">
+        <p><h2 align="center">Блок-схеми</h2></p>
+        <img src="laB1/lab1.1.png">   
+		<img src="laB1/lab1.2.png">
+	
+    </div>
+	
+	
+	 <div class="code">
+        <details>
+            <summary>Код програми</summary>
+        <pre>
+            <code>
+			#include <iostream>
+#include <cstdio>
+using namespace std;
+
+int main()
+{
+	//student indetication
+
+	cout << "lab 1, task 1, var 17, Veronika Manoshyna IPZ11" << endl;
+	cout << "calc expression a/(1+b/(C+ln(d+a)))" << endl;
+	//input data
+	float a, b, c, d;
+	cout << "input float a > 0, b!= -1, c, d > 1" << endl;
+	cin >> a >> b >> c >> d;
+
+	if ((a < 0 || d < 1||b == -1))
+	{
+		cout << "Result not found" << endl;
+		
+	}else
+	{
+
+		//solution expression
+		float res = a / (1 + b / (c + log(d + a)));
+
+		//output result
+		cout << "a=" << a << " b=" << b << " c=" << c << " d=" << d << endl;
+		cout << "a/(1+b/(C+log(d+a)))= " << res << endl;
+		
+	}
+	
+	system("pause");
+	
+	
+			
+			
+			
+			#include <iostream>
+#include <cstdio>
+using namespace std;
+
+int main()
+{
+	
+	setlocale(LC_ALL, "ukr");
+	//вводимо типи даних
+	double u,h,i;
+	
+
+	//індетифікація
+	cout << "лаб.1, завд.2, вар.17, Маношина Веронiка IПЗ-11" << endl;
+	//умова задачі
+	cout << "Порахувати роботу ел.струму" << endl;
+	cout << "Умова:Яку роботу виконає електричний струм для нагрiвання води, якщо електрочайник автоматично вiдключається через 8 хвилин роботи ? Сила струму, яка споживається чайником дорiвнює 7.5 А, напруга в мережi дорiвнює 220 В."<<endl;
+	cout << "Введiть данi з умови задачi: t=";
+	cin >> h;
+	cout << "U= ";
+	cin >> u;
+	cout << "I= ";
+	cin >> i;
+
+	if (i == 7.5 && h == 8 && u == 220) {
+		cout << "A = IUt = " << h * 60 * u * i << endl; //обчислення та результат
+
+	}
+	else if(i==7.5&&h==480&&u==220) {
+		cout << "A = IUt = " << h  * u * i << endl; //обчислення та резултат
+	}
+	else {
+		cout << "Данi введенi невiрно! Прочитай умову задачi ще раз!" << endl;
+
+	}
+
+
+
+}
+               
+            </code>
+        </pre>
+    </details>
+    </div>
+	
+	
+	
+	
+	 <div class="content"> 
+        <p><h2 align="center">Виконання програми</h2></p> 
+        <p><h4 align="center">Виконання завдання №1</h4></p>           
+            <img src="laB1/result1.png">
+            <p><h4 align="center">Виконання завдання №2</h4></p>                         
+            <img src="laB1/result2.png"> 
+                  
+    </div>
+    
+    
+    
+    <div class="content">  
+        <p><h2 align="center">Перевірка достовірності</h2></p>
+        <p><h4 align="center">Перевірка завдання №1</h4></p>         
+        <img src="laB1/достовірність1.png">                 
+    </div>
+    
+    
+                <div class="content">
+                    <p><h2 align="center">Висновок</h2></p>
+                <p>На цій лабораторній роботі я реалізувала різноманітні
+                    форми обчислення математичних виразів та обчислення фізичної задачі за формулою.
+                </p>
+                </div>
+            </div>
+		
+
+
+	</body>
+
+
+
+</html>

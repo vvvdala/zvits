@@ -1,0 +1,225 @@
+ <!DOCTYPE html>
+<html>
+
+	<head>
+
+		<meta charset="UTF-8">
+		<title>Лабораторна робота №2</title>
+
+
+	</head>
+	<body>
+	
+	
+		<input type="checkbox" id="menu-trigger" class="menu-trigger">
+   <label for="menu-trigger"></label>
+        <div class="menu">
+            <ul class="menu">
+                <li><a class="button" href="main.html">Головна сторінка</a></li>
+                <li><a  class="button_current" href="lab1.html">Лабораторна робота №1</a></li>
+                <li><a  class="button" href="lab2.html">Лабораторна робота №2</a></li>
+                <li><a  class="button" href="lab3.html">Лабораторна робота №3</a></li>
+                <li><a  class="button" href="lab4.html">Лабораторна робота №4</a></li>
+                <li><a  class="button" href="lab5.html">Лабораторна робота №5</a></li>
+                <li><a  class="button" href="lab6.html">Лабораторна робота №6</a></li>
+                <li><a  class="button" href="lab7.html">Лабораторна робота №7</a></li>
+                <li><a  class="button" href="lab8.html">Лабораторна робота №8</a></li>
+                <li><a  class="button" href="lab9.html">Лабораторна робота №9</a></li>
+                <li><a  class="button" href="lab10.html">Лабораторна робота №10</a></li>
+                <li><a  class="button" href="lab11.html">Лабораторна робота №11</a></li>
+                <li><a  class="button" href="IndProject.html">Індивідуальний проект</a></li>
+              </ul>
+            </div>
+ 
+ <div class="bodyy">   
+    <div class="content">
+        <p><h2 align="center">Мета роботи</h2></p>            
+<ol>
+<li><p>Вивчити особливості розгалужених обчислювальних процесів</li></p>
+<li><p>Опанувати технологію використання логічних операторів</li></p>
+</ol>
+    </div>    
+    
+    
+    
+    <div class="content">
+            
+                <p><h2 align="center">Умова задачі</h2></p>
+                <p><h3 align="center">Завдання №1</h3></p>
+                <p><h5 align="center">Обчислити значення функції у</h5></p>
+                <img src="laB2/task2.1.png">
+            </div>
+            <div class="content">
+        <p><h3 align="center">Завдання №2</h3></p>
+		<img src="laB2/task2.2.png">
+        
+    </div>
+    
+    
+    
+    
+    <div class="content"> 
+        <p><h2 align="center">Аналіз задачі</h2></p>            
+<p>1)Для виконання завдання 1 потрібно застосувати технологію розгалужених обчислень за допомогою оператора
+    if.
+</p>
+<p>2)Для виконання другого завдання мені необхідно логічно визначити чи отримує покупець дисконтну картку, чи ні,
+використовуючи також оператора if.
+</p>
+</div>
+
+
+
+    <div class="content">
+        <p><h2 align="center">Блок-схеми</h2></p>
+        <p><h4 align="center">Блок-схема завдання №1</h4></p>
+        <img src="laB2/lab2.png" class="test">  
+		<img src="laB2/lab2.2.png" class="test"> 
+    </div>
+	
+	
+	 <div class="code">
+        <details>
+            <summary>Код програми</summary>
+        <pre>
+            <code>
+			
+			#include <iostream>
+#include <math.h>
+#include <cstdio>
+
+using namespace std;
+
+int main()
+{
+	cout << "Lab 2.1 Var17. Student Veronika Manoshyna IPZ-11\n";
+	double x;
+	
+
+	cout << "define y:" << endl;
+		cout << "(x+1)^2      if 0 < x < 5" << endl;
+		cout << "(x-1)^2      if x=5" << endl;
+		cout << "(x-1)/(x+1)  if x>5" << endl;
+		cout << "(x-1)(x+1)   if x<0" << endl;
+		
+
+		string answ = "y";
+		while(answ=="y") {
+			cout << "input x:";
+			cin >> x;
+			if (x > 0 && x < 5) {
+
+				cout << "y = " << pow((x + 1), 2)<<endl;
+
+			}
+			else if (x < 0) {
+
+				cout << "y = " << (x - 1) * (x + 1)<<endl;
+
+			}
+			else if (x == 5) {
+
+				cout << "y = 16"<<endl;
+
+			}
+			else if (x > 5) {
+
+				cout << "y = " << (x - 1) / (x + 1)<<endl;
+
+			}
+			else {
+
+				cout << "Not founded"<<endl;
+
+			}
+			cout << "Continue? (y or n)= ";
+			cin >> answ;
+		}
+		
+		
+		system("pause");
+
+
+}
+
+
+
+#include <iostream>
+#include <math.h>
+#include <cstdio>
+
+using namespace std;
+
+int main() {
+
+	cout << "Lab 2.2 Var17. Student Veronika Manoshyna IPZ-11\n";
+	double b1, b2, b3;
+	
+	setlocale(LC_ALL, "ukr");
+	cout << "У супермаркетi оголосили акцiю. Покупець, який придбає за три покупки товар на суму, що перевищує 1000 грн.,\n"<<"одержує дисконтну картку за умови, що вартiсть кожної наступної покупки, починаючи з другої, не менше як на пiвцiни\n"<<"перевищує сумарну вартiсть попереднiх.Складiть програму, яка за вартiстю трьох покупок визначає, чи заробив покупець\n"<<"дисконтну картку." << endl;
+
+	string answ = "y";
+		while (answ == "y") {
+			cout << "Уведiть суму 1 покупки: ";
+			cin >> b1;
+			cout << "Уведiть суму 2 покупки:";
+			cin >> b2;
+			cout << "Уведiть суму 3 покупки:";
+			cin >> b3;
+
+			if (b2 > b1 / 2 && b3 > (b1 + b2) / 2 && b1 + b2 + b3 > 1000) {
+				cout << "Ви отримали дисконтну картку!"<<endl;
+			}
+			else {
+				cout << "Вибачте, але за умовами акцiї - Ви не отримуєте дисконтну картку."<<endl;
+			}
+			cout << "Continue? (y or n)=" ;
+			cin >> answ;
+
+		}
+
+		system("pause");
+	
+
+
+}
+
+
+               
+            </code>
+        </pre>
+    </details>
+    </div>
+	
+	
+	
+	 <div class="content"> 
+        <p><h2 align="center">Виконання програми</h2></p> 
+        <p><h4 align="center">Виконання завдання №1</h4></p>           
+            <img src="laB2/result2.1.png">
+            <p><h4 align="center">Виконання завдання №2</h4></p>                         
+            <img src="laB2/result2.2.png">           
+    </div>
+    
+    
+    
+    <div class="content">  
+        <p><h2 align="center">Перевірка достовірності</h2></p>
+        <p><h4 align="center">Перевірка завдання №1</h4></p>         
+        <img src="laB2/дост2.1.png">       
+		<img src="laB2/дост2.2.png">   
+		<img src="laB2/дост2.3.png">   
+		<img src="laB2/дост2.4.png">   		
+    </div>
+    
+    
+                <div class="content">
+                    <p><h2 align="center">Висновок</h2></p>
+                <p>На цій лабораторній роботі я реалізувала обчислення за допомогою розгалужених процесів
+                    Для цього я використовувала оператор if та різноманітні математичні формули.
+                </p>
+                </div>
+            </div>
+	
+</body>
+</html>	
