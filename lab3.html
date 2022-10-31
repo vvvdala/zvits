@@ -1,0 +1,206 @@
+<HTML>
+<HEAD>
+    <title>Лабораторна робота №3</title>
+    
+</HEAD>
+<BODY class="main">
+    
+   <input type="checkbox" id="menu-trigger" class="menu-trigger">
+   <label for="menu-trigger"></label>
+        <div class="menu">
+            <ul class="menu">
+                <li><a class="button" href="main.html">Головна сторінка</a></li>
+                <li><a  class="button" href="lab1.html">Лабораторна робота №1</a></li>
+                <li><a  class="button" href="lab2.html">Лабораторна робота №2</a></li>
+                <li><a  class="button_current" href="lab3.html">Лабораторна робота №3</a></li>
+                <li><a  class="button" href="lab4.html">Лабораторна робота №4</a></li>
+                <li><a  class="button" href="lab5.html">Лабораторна робота №5</a></li>
+                <li><a  class="button" href="lab6.html">Лабораторна робота №6</a></li>
+                <li><a  class="button" href="lab7.html">Лабораторна робота №7</a></li>
+                <li><a  class="button" href="lab8.html">Лабораторна робота №8</a></li>
+                <li><a  class="button" href="lab9.html">Лабораторна робота №9</a></li>
+                <li><a  class="button" href="lab10.html">Лабораторна робота №10</a></li>
+                <li><a  class="button" href="lab11.html">Лабораторна робота №11</a></li>
+                <li><a  class="button" href="IndProject.html">Індивідуальний проект</a></li>
+              </ul>
+            </div>
+    
+    
+    
+    
+    <div class="bodyy">   
+    <div class="content">
+        <p><h2 align="center">Мета роботи</h2></p>            
+<ol>
+<li><p>Вивчити особливості циклічних обчислювальних процесів</li></p>
+<li><p>Опанувати технологію використання операторів циклів</li></p>
+<li><p>Навчитися розробляти алгоритми та програми циклічних процесів</li></p>
+</ol>
+    </div>    
+    
+    
+    
+    <div class="content">
+            
+                <p><h2 align="center">Умова задачі</h2></p>
+                <p><h3 align="center">Завдання №1</h3></p>
+                <p><h5 align="center">Обчислити суму ряду за поданою формулою</h5></p>
+                <img src="laB3/task3.1.png">        
+    </div>
+    
+    
+    
+    
+    <div class="content"> 
+        <p><h2 align="center">Аналіз задачі</h2></p>            
+<p>Для виконання цього завдання необхідно використовувати різноманітні форми циклів та умовні оператори 
+    Програма повинна постійно обчислювати значення елементу ряду та заносити його до суми до того моменту, поки цей
+    елемент не перевищить задану умовою точність. 
+</div>
+
+
+
+    <div class="content">
+        <p><h2 align="center">Блок-схеми</h2></p>
+        <p><h4 align="center">Блок-схема завдання</h4></p>
+        <img src="laB3/schemes3.1.png" class="test">
+    </div>
+    
+    
+    
+    
+    <div class="code">
+        <details>
+            <summary>Код програми</summary>
+        <pre>
+            <code>
+                #include <iostream>
+#include <iomanip>
+#include <float.h>
+#include <math.h>
+
+using namespace std;
+float  numerator1,numerator2, denominator, member, xinstep,numerator;
+int x, k;
+float sum;
+float accuracy;
+
+
+
+
+
+
+void DisplaySum() {
+	cout << setw(5) << x << setw(10) << k << setw(20) << member << setw(15) << sum << endl;
+}
+
+void SumCalc() {
+
+	
+
+		for (x = 1;x <= 5;x++) {
+
+			k = 0;
+			xinstep = 1;
+			member = x *(x + 1)*x;
+			sum += member;
+			numerator1 = x;
+			numerator2 = numerator1 * xinstep;
+			denominator = 1;
+			
+			 
+			DisplaySum();
+
+			
+			do {
+
+				k++;
+				xinstep *= x;
+				numerator1 *= (x + k);
+				numerator = x*(x + 1) * numerator1*xinstep;
+				denominator *= k;
+				member = (numerator / denominator)*xinstep;
+				
+				
+				
+
+				if ((fabs(member) < FLT_MIN || fabs(member) > FLT_MAX)) {
+					cout << "Знач-ня допустиме(переповнення)" << endl;
+					break;
+				}
+				sum += member;
+				DisplaySum();
+
+				
+
+				
+
+				
+				
+
+				
+			} while (accuracy < abs(member));
+			
+			
+			cout << "====================================================" << endl;
+
+		}
+	
+}
+
+	int main() {
+		setlocale(LC_ALL, "ukr");
+		cout << "Лаб.3., вар.17, Маношина Веронiака, група IПЗ-11" << endl;
+		cout << "Обчислити вкладенi суми" << endl <<
+			"Зовн.сума: х вiд 1 до 5" << endl <<
+			"Внутр.сума: k вiд 0 до нескiнченостi" << endl <<
+			" 5   inf" << endl <<
+			"sum  sum (x(x+1)...(x+k)x^k)/k! " << endl <<
+			"x=1  k=0" << endl;
+		cout << "Введiть знач-ня точностi розрахунку: " << endl;
+		cin >> accuracy;
+
+		cout << "result of iterations" << endl;
+		cout << "====================================================" << endl;
+		cout << setw(5) << "x" << setw(10) << "k" << setw(20) << "element" << setw(15) << "sum" << endl;
+		cout << "====================================================" << endl;
+		SumCalc();
+		cout << "====================================================" << endl;
+		cout << "Sum = " << sum << endl;
+		sum = 0;
+		accuracy = 0;
+		system("pause");
+	}
+	
+            </code>
+        </pre>
+    </details>
+    </div>
+    
+     
+    <div class="content"> 
+        <p><h2 align="center">Виконання програми</h2></p> 
+        <p><h4 align="center">Виконання завдання</h4></p>           
+            <img src="laB3/result3.1.1.png">
+            <img src="laB3/results3.1.2.png">
+            <img src="laB3/results3.1.3.png"> 
+			<img src="laB3/results3.1.4.png">   			
+    </div>
+    
+    
+    
+    <div class="content">  
+        <p><h2 align="center">Перевірка достовірності</h2></p>
+        <p><h4 align="center">Перевірка завдання</h4></p>         
+        <img src="laB3/перевірка3.1.png">                  
+    </div>
+    
+    
+                <div class="content">
+                    <p><h2 align="center">Висновок</h2></p>
+                <p>На цій лабораторній роботі я реалізувала обчислення за допомогою циклів. Для цього я використовував 
+                    як цикли for,do while. 
+                </p>
+                </div>
+            </div>
+</HTML>
