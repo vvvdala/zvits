@@ -1,0 +1,274 @@
+<HTML>
+<HEAD>
+    <title>Лабораторна робота №5</title>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+</HEAD>
+<BODY class="main">
+    
+   <input type="checkbox" id="menu-trigger" class="menu-trigger">
+   <label for="menu-trigger"></label>
+        <div class="menu">
+            <ul class="menu">
+               <li><a class="button" href="main.html">Головна сторінка</a></li>
+                <li><a  class="button" href="lab1.html">Лабораторна робота №1</a></li>
+                <li><a  class="button" href="lab2.html">Лабораторна робота №2</a></li>
+                <li><a  class="button_current" href="lab3.html">Лабораторна робота №3</a></li>
+                <li><a  class="button" href="lab4.html">Лабораторна робота №4</a></li>
+                <li><a  class="button" href="lab5.html">Лабораторна робота №5</a></li>
+                <li><a  class="button" href="lab6.html">Лабораторна робота №6</a></li>
+                <li><a  class="button" href="lab7.html">Лабораторна робота №7</a></li>
+                <li><a  class="button" href="lab8.html">Лабораторна робота №8</a></li>
+                <li><a  class="button" href="lab9.html">Лабораторна робота №9</a></li>
+                <li><a  class="button" href="lab10.html">Лабораторна робота №10</a></li>
+                <li><a  class="button" href="lab11.html">Лабораторна робота №11</a></li>
+                <li><a  class="button" href="IndProject.html">Індивідуальний проект</a></li>
+              </ul>
+            </div>
+    
+    
+    
+    
+    <div class="bodyy">   
+    <div class="content">
+        <p><h2 align="center">Мета роботи</h2></p>            
+<ol>
+<li><p>Вивчити особливості рекурсивних процесів</li></p>
+<li><p>Опанувати технологію рекурсивних обчислень</li></p>
+<li><p>Навчитися розробляти алгоритми та програми із застосуванням рекурсивних функцій</li></p>
+</ol>
+    </div>    
+    
+    
+    
+    <div class="content">
+            
+                <p><h2 align="center">Умова задачі</h2></p>
+                <p><h3 align="center">Завдання №1</h3></p>
+                <p><h5 align="center">Реалізувати рекурсивний та ітеративний варіанти розв'язку задач, використовуючи рекурсію та оператор циклу. Порівняти ефективність рекурсивної та ітеративної реалізацій, визначивши глибину рекурсії та кількість ітерацій циклу..</h5></p>
+                <img src="laB5/task5.1.png">
+            </div>
+            <div class="content">
+        <p><h3 align="center">Завдання №2</h3></p>
+        <p><h5 align="center">Увести з клавіатури натуральне число n. Вивести всі прості множники цього числа в довільному порядку з урахуванням кратності. Контрольний тест: уведено число 84, отриманий результат: 2 2 3 7.</h5></p>
+    </div>
+    
+    
+    
+    
+    <div class="content"> 
+        <p><h2 align="center">Аналіз задачі</h2></p>            
+<p>Для виконання завдання 1 потрібно застосувати рекурсивну функцію, для знаходження рекуретного співвідношення , яке потім ми передамо у суму. 
+</p>
+<p>Для виконання 2 завдання, потрібно в рекурсивнк функцію передати n та 2, якщо n націло ділеться на а, то виводимо на екран а та повертаємо у функцію n поділене на а,в іншому випадку збільшуємо на а на 1.
+</p>
+</div>
+
+
+
+    <div class="content">
+        <p><h2 align="center">Блок-схеми</h2></p>
+        <p><h4 align="center">Блок-схема завдання №1</h4></p>
+        <img src="laB5/lab5_scheme_2.png" class="test">
+        <p><h4 align="center">Блок-схема завдання №2</h4></p>
+        <img src="laB5/lab5_scheme.png" class="test">    
+    </div>
+    
+    
+    
+    
+    <div class="code">
+        <details>
+            <summary>Код програми</summary>
+        <pre>
+            <code>
+                #include <iostream>
+#include <time.h>
+#include <functional>
+#include <iomanip>
+#include <math.h>
+using namespace std;
+
+int f_recursive(int n)
+{
+    if (n % 10 > 0) {
+        return n % 10;
+    }
+    else if (n == 0) {
+        return 0;
+    }
+    else {
+        return f_recursive(n / 10);
+    }
+}
+
+int f_iterative(int n)
+{
+    
+    if (n % 10 > 0) {
+       return n % 10;
+    }
+    else if (n == 0) {
+       return 0;
+    }
+    else {
+        for (int i = n;;)
+        {
+            i = i / 10;
+            if (i % 10 > 0) {
+                 return i %10;
+            }
+            else if (i == 0) {
+               return 0;
+            }
+        }
+    }
+}
+
+int body_iterative(int p, int q) {
+
+    int res = 0;
+    for (int i = p; i <= q; i++) {
+        res += f_iterative(i);
+    }
+    return res;
+}
+
+int body_recursive(int p, int q) {
+
+    int res = 0;
+    for (int i = p; i <= q; i++) {
+        res += f_recursive(i);
+    }
+    return res;
+
+    
+}
+
+
+
+
+
+
+void task1() {
+    
+    int p, q;
+    cout << "Input p: ";
+    cin >> p;
+    cout << "Input q: ";
+    cin >> q;
+
+    clock_t tStart1 = clock();
+    cout << "Result recursive: " << body_recursive(p, q);
+    clock_t tStop1 = clock();
+    cout << "\nTime recursive: " << tStop1 - tStart1;
+
+    clock_t tStart2 = clock();
+    cout << "\nResult iterative: " << body_iterative(p, q);
+    clock_t tStop2 = clock();
+    cout << "\nTime iterative: " << tStop2 - tStart2;
+
+
+}
+
+
+
+
+
+int numb_del(int n, int a) {
+    
+
+        if (n%a==0) {
+            cout << a << endl;
+            numb_del(n / a, a);
+
+            if (n == 1) {
+                return numb_del(n, 2);
+            }
+            
+        }
+        else {
+            numb_del(n, a + 1);
+        }
+   
+
+}
+    
+
+
+
+
+
+void task2() {
+    int n;
+    cout << "Finding prime factors" << endl;
+    cout << "Please input n: " ;
+    cin >> n;
+    numb_del(n, 2);
+
+}
+
+
+
+
+int main()
+{
+
+    int chs;
+    setlocale(LC_ALL, "ukr");
+    cout << "Lab 5. Var17. Student Veronika Manoshyna IPZ-11" << endl;
+    while (true) {
+        cout << "Choose the task by press 1 or 2 on your keyboard:  ";
+        cin >> chs;
+        switch (chs) {
+        case 1:
+            task1();
+            break;
+        case 2:
+            task2();
+            break;
+        }
+
+        cout << "\nContinue?\n 1 - yes\n 0 - no\nYour answer: ";
+        cin >> chs;
+        if (chs == 0)
+        {
+            break;
+            system("cls");
+       
+        }
+    }
+    system("pause");
+}
+            </code>
+        </pre>
+    </details>
+    </div>
+    
+    
+    
+    
+    <div class="content"> 
+        <p><h2 align="center">Виконання програми</h2></p> 
+        <p><h4 align="center">Виконання завдання </h4></p>           
+            <img src="laB5/result5.1.png">
+                     
+    </div>
+    
+    
+    
+    <div class="content">  
+        <p><h2 align="center">Перевірка достовірності</h2></p>
+        <p><h4 align="center">Перевірка завдання №1</h4></p>         
+        <img src="laB5/достовірність5.1.png">
+		<p><h4 align="center">Перевірка завдання №2</h4></p>                               
+        <img src="laB5/result5.2.png">     
+    </div>
+    
+    
+                <div class="content">
+                    <p><h2 align="center">Висновок</h2></p>
+                <p>На цій лабораторній роботі я реалізувала обчислення виразів за допомогою рекурсивних функцій, порівнюючи рекурсивний та ітеративний метод. В першому завданні ітеративний метод більш ефективний для використання, бо він швидше працює.
+                </p>
+                </div>
+            </div>
+</HTML>
