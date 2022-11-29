@@ -1,0 +1,707 @@
+<HTML>
+<HEAD>
+    <title>Лабораторна робота №6</title>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+</HEAD>
+<BODY class="main">
+    
+   <input type="checkbox" id="menu-trigger" class="menu-trigger">
+   <label for="menu-trigger"></label>
+        <div class="menu">
+            <ul class="menu">
+                <li><a class="button" href="main.html">Головна сторінка</a></li>
+                <li><a  class="button" href="lab1.html">Лабораторна робота №1</a></li>
+                <li><a  class="button" href="lab2.html">Лабораторна робота №2</a></li>
+                <li><a  class="button_current" href="lab3.html">Лабораторна робота №3</a></li>
+                <li><a  class="button" href="lab4.html">Лабораторна робота №4</a></li>
+                <li><a  class="button" href="lab5.html">Лабораторна робота №5</a></li>
+                <li><a  class="button" href="lab6.html">Лабораторна робота №6</a></li>
+                <li><a  class="button" href="lab7.html">Лабораторна робота №7</a></li>
+                <li><a  class="button" href="lab8.html">Лабораторна робота №8</a></li>
+                <li><a  class="button" href="lab9.html">Лабораторна робота №9</a></li>
+                <li><a  class="button" href="lab10.html">Лабораторна робота №10</a></li>
+                <li><a  class="button" href="lab11.html">Лабораторна робота №11</a></li>
+                <li><a  class="button" href="IndProject.html">Індивідуальний проект</a></li>
+              </ul>
+            </div>
+    
+    
+    
+    
+    <div class="bodyy">   
+    <div class="content">
+        <p><h2 align="center">Мета роботи</h2></p>            
+<ol>
+<li><p>Ознайомитися з особливостями типу масиву</li></p>
+<li><p>Опанувати технологію застосування масивів даних</li></p>
+<li><p>Навчитися розробляти алгоритми та програми із застосуванням одновимірних масивів</li></p>
+</ol>
+    </div>    
+    
+    
+    
+    <div class="content">
+            
+                <p><h2 align="center">Умова задачі</h2></p>
+                <p><h3 align="center">Завдання №1</h3></p>
+                <p><h5 align="center">Створити одновимірний масив, кількість елементів якого ввести з клавіатури.
+				Передбачити меню вибору способу створення масиву: введення з клавіатури або генерація псевдовипадкових чисел. 
+				Вивести на екран суму елементів, розташованих до першого від’ємного елементу та добуток елементів, розташованих після останнього від’ємного елемента. 
+				Якщо від’ємних елементів немає, то вивести відповідне повідомлення(За домовленністю з замовником програма повинна сумувати елементи 
+				масиву до першого від'ємного та після нього множимо інші елементи).</h5></p>
+            </div>
+            <div class="content">
+        <p><h3 align="center">Завдання №2</h3></p>
+        <p><h5 align="center">Створити одновимірний масив, кількість елементів якого ввести з клавіатури. 
+		Передбачити меню вибору способу створення масиву: введення з клавіатури або генерація псевдовипадкових чисел. 
+		Відсортувати масив за алгоритмом Шелла (Shell sort) [1.10] та здійснити пошук в масиві за алгоритмом Jump search [2.8]. 
+		Передбачити виведення проміжних результатів в процесі виконання ітерацій сортування масиву.</h5></p>
+            </div>
+            <div class="content">
+                <p><h3 align="center">Завдання №3</h3></p>
+                <p><h5 align="center">Для трьох многочленів
+,
+заданих степенями та коефіцієнтами, перевірити властивості:
+комутативність додавання:
+f(x)+g(x) = g(x)+f(x)
+асоціативність множення:
+f(x)*(g(x)*h(x)) = (g(x)*f(x))*h(x)
+дистрибутивность:
+f(x)*(g(x)+h(x)) = f(x)*g(x)+f(x)*h(x)
+Степені та коефіцієнти многочленів задавати з клавіатури або генерувати псевдовипадковими числами.</h5></p>
+            </div>
+
+    
+    
+    
+    <div class="content"> 
+        <p><h2 align="center">Аналіз задачі</h2></p>            
+<p>Для виконаня першого завдання необхідно застосувати функцію
+    rand() для генерації псевдовипадкових чисел. Далі необхідно
+    визначити перший від'ємний елемент масиву за допомогою флагу. Поки флаг неправдивий - сумуємо, 
+	як тільки він стає правдивим - множимою
+</p>
+<p>Для виконання другого завдання, створємо масив та сортуємо його алгоритмом Шелла,
+за допомогою ітерацій. Далі після цього, нам потрібно знайти введений елемент масиву за 
+допомогою JumpSearch.
+</p>
+<p>
+    Для виконання третього завдання, потрібно створити три масиви, які будуть обраховуватися 
+	за формулою наведеною в завданні. Пишемо окремі функції для кожної властивості, де 
+	ми будемо порівнювати результати роботи.
+</p>
+</div>
+
+
+
+    <div class="content">
+        <p><h2 align="center">Блок-схеми</h2></p>
+        <p><h4 align="center">Блок-схема завдання №1</h4></p>
+        <img src="laB6/scheme6.1.png" class="test">
+        <p><h4 align="center">Блок-схема завдання №2</h4></p>
+        <img src="laB6/scheme6.2.png" class="test"> 
+        <p><h4 align="center">Блок-схема завдання №3</h4></p>
+        <img src="laB6/lab6.3.png" class="test">   
+		<img src="laB6/sum_scheme.6.1.png" class="test">   
+		
+    </div>
+    
+    
+    
+    
+    <div class="code">
+        <details>
+            <summary>Код програми</summary>
+        <pre>
+            <code>
+			#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+void shellSort(int N,int arr[]) {
+    int j;
+   
+    for (int step = N / 2;step > 0;step /= 2) {//інтервал
+        
+        for (int i = step;i < N;i++) {
+
+            int tmp = arr[i];
+            for (j = i; j >= step; j -= step)
+            {
+                if (tmp < arr[j - step]) {//якщо елемент менше з порівнювальним, то міняємо місцями
+                    arr[j] = arr[j - step];
+                }
+                else {
+                    break;
+                }
+                
+            }
+            arr[j] = tmp;
+            
+               
+           
+        }
+        for (int i = 0; i < N; i++)
+        {
+
+            cout << arr[i] << "\t";
+
+        }
+        cout << "\n";
+    }
+
+}
+
+int jumpSearch(int arr[], int N, int item) {
+    int i = 0;
+    int step = sqrt(N);
+
+    while (arr[step] <= item && step < N) {
+        //цикл для продовження "пригання" по блоках
+        i = step;
+        step += sqrt(N);
+
+
+    }
+
+    for (int x = i;x < step;x++) {//лінійний пошук в даному блоці
+        if (arr[x] == item) {
+            return x;
+        }
+       
+    }
+     
+    
+}
+
+void task1() {
+    
+    int n;
+    int  SIZE;
+    
+
+    bool flag = false;
+
+    int mnz = 1;
+    int sum = 0;
+    
+    srand(time(NULL));
+
+    cout << "\nDo you want to enter numbers themselves(1) or randomly generated ones?(2)"<<endl;
+    cin >> n;
+
+    
+    
+    cout << "Enter the number of array elements:" << endl;
+    cin >> SIZE;
+
+    int* arr = new int[SIZE];
+    
+
+    if (n == 1) {
+        for (int i = 0;i < SIZE;i++) {
+           
+            cout << "" << endl;
+            cin >> arr[i];
+
+            
+            
+            
+                if (flag) {//після знайденего від'ємного числа перемножуємо
+                    mnz *= arr[i];
+                }
+                
+
+
+                if (arr[i] < 0) { //робимо перевірку на флаг
+                    flag = true;
+
+                }
+
+                
+
+
+
+                if (!flag) { //поки флаг в нас false додаємо елементи
+                    sum += arr[i];
+                }
+            
+            
+       
+        }
+        if (mnz == 1) {
+            //якщо mnz продовжує дорівнювати 1, тоді весь цей час відбувалось множення
+            //а значить від'ємний елемент не знайдено
+            cout << "No negative numbers found";
+        }
+        else {
+            cout << "Sum: " << sum << endl;
+            cout << "Multiplication: " << mnz << endl;
+        }
+       
+        
+
+
+        
+        
+       
+    }
+    if (n == 2) {
+        for (int i = 0;i < SIZE;i++) {
+            arr[i] = rand()%100-50;
+
+
+            if (flag) {
+                mnz *= arr[i];
+            }
+
+
+
+            if (arr[i] < 0) {
+                flag = true;
+
+            }
+
+
+
+
+
+            if (!flag) {
+                sum += arr[i];
+            }
+
+        }
+        if (mnz == 1) {
+            cout << "No negative numbers found";
+        }
+        else {
+            cout << "Sum: " << sum << endl;
+            cout << "Multiplication: " << mnz << endl;
+        }
+
+        cout << "Elements:" << endl;
+
+        for (int i = 0;i < SIZE;i++) {
+            cout << arr[i] << endl;
+        }
+       
+    }
+}
+
+void task2() {
+    int n, SIZE, item, check;
+    srand(time(NULL));
+
+    cout << "\nDo you want to enter numbers themselves(1) or randomly generated ones?(2)" << endl;
+    cin >> n;
+
+
+
+    cout << "Enter the number of array elements:" << endl;
+    cin >> SIZE;
+
+    int* arr = new int[SIZE];
+    if (n == 1) {
+        for (int i = 0;i < SIZE;i++) {
+            cout << "" << endl;
+            cin >> arr[i];
+
+        }
+        cout << "\nSorted elements:\n ";
+
+       shellSort(SIZE, arr);
+
+       cout << "Enter a number to search for it in the array\n";
+       cin >> item;
+
+       
+      check=jumpSearch(arr, SIZE, item);
+     
+      cout << "Location: ";
+      cout << check;
+     
+
+       
+       
+
+       
+
+    }
+
+    if (n == 2) {
+        for (int i = 0;i < SIZE;i++) {
+            arr[i] = rand() % 100 - 50;
+        }
+        cout << "Elements:" << endl;
+
+        for (int i = 0;i < SIZE;i++) {
+            cout << arr[i] << "\t";
+        }
+
+        cout << "\nSorted elements:\n ";
+
+        shellSort(SIZE, arr);
+
+        cout << "Enter a number to search for it in the array\n";
+        cin >> item;
+
+
+        check = jumpSearch(arr, SIZE, item);
+        cout << "Location: ";
+        cout << check;
+    }
+
+
+}
+
+int summa_f(int N, int arr[],int x) {
+
+    float summa=0;
+    
+    for (int i = 0; i < N; i++) {
+
+        summa += arr[i]*pow(x,(N-i));
+         
+
+    }
+     
+
+    return summa;
+}
+
+int summa_g(int N, int arr[],int x) {
+   
+
+    float summa = 0;
+    
+
+    for (int i = 0; i < N; i++) {
+
+        summa += arr[i] * pow(x, (N - i));
+
+    }
+
+
+    return summa;
+    
+}
+
+int summa_h(int N, int arr[],int x) {
+
+    float summa = 0;
+   
+    for (int i = 0; i < N; i++) {
+
+        summa += arr[i] * pow(x, (N - i));
+
+    }
+
+
+
+
+    return summa;
+}
+
+
+int vlast1(int fx[], int gx[], int N, int N1,int x) {
+    int left = summa_f(N, fx,x)+ summa_g(N1, gx,x);
+    int right = summa_g(N1, gx,x)+ summa_f(N, fx,x);
+    
+    cout << "Left side:";
+    cout << left << endl;
+
+    cout << "Right side:";
+    cout << right << endl;
+
+   
+
+    if (left == right) {
+        cout << "right!" << endl;
+
+    }
+    else {
+        cout << "wrong";
+    }
+
+    return 0;
+
+}
+
+int vlast2(int fx[], int gx[], int hx[], int N, int N1, int N3,int x) {
+    int left = summa_f(N, fx,x);
+    int left1 = summa_g(N1, gx,x);
+    int left2 = summa_h(N3, hx,x);
+
+    int right = summa_g(N1, gx,x);
+    int right1 = summa_f(N, fx,x);
+    int right2 = summa_h(N3, hx,x);
+
+    cout << "Left side:";
+    cout << left * (left1 * left2) << endl;
+
+    cout << "Right side:";
+    cout << (right * right1) * right2 << endl;
+
+
+    cout << "So our property is...";
+
+    if (left * (left1 * left2) == (right * right1) * right2) {
+        cout << "right!" << endl;
+
+    }
+    else {
+        cout << "wrong";
+    }
+    return 0;
+
+}
+
+
+int vlast3(int fx[], int gx[], int hx[], int N, int N1, int N3,int x) {
+    int left = summa_f(N, fx,x);
+    int left1 = summa_g(N1, gx,x);
+    int left2 = summa_h(N3, hx,x);
+
+    int right = summa_f(N, fx,x);
+    int right1 = summa_g(N1, gx,x);
+    int right2 = summa_h(N3, hx,x);
+
+    cout << "Left side:";
+    cout << left * (left1 + left2) << endl;
+
+    cout << "Right side:";
+    cout << (right * right1) + (right * right2) << endl;
+
+
+    cout << "So our property is...";
+
+    if (left * (left1 + left2) == (right * right1) + (right * right2)) {
+        cout << "right!" << endl;
+
+    }
+    else {
+        cout << "wrong";
+    }
+    return 0;
+
+}
+
+
+
+void task3() {
+    int choice;
+
+    int n, m, k;
+
+
+    cout << "Enter the n:" << endl;
+    cin >> n;
+    int* a = new int[n];
+
+
+    cout << "Enter the m:" << endl;
+    cin >> m;
+    int* b = new int[m];
+
+
+    cout << "Enter the k:" << endl;
+    cin >> k;
+    int* c = new int[k];
+
+
+    cout << "\nDo you want to enter numbers themselves(1) or randomly generated ones?(2)" << endl;
+    cin >> choice;
+    if (choice == 1) {
+
+
+        cout << "Enter polynomial a" << endl;
+        for (int i = 0;i < n;i++) {
+
+            cout << "" << endl;
+            cin >> a[i];
+
+        }
+
+
+        cout << "Enter polynomial b" << endl;
+        for (int i = 0;i < m;i++) {
+
+            cout << "" << endl;
+            cin >> b[i];
+
+        }
+
+
+        cout << "Enter polynomial c" << endl;
+        for (int i = 0;i < k;i++) {
+
+            cout << "" << endl;
+            cin >> c[i];
+
+        }
+
+        int x;
+        cout << "Enter the x:" << endl;
+        cin >> x;
+
+
+        cout << "Check the first" << endl;
+        cout << "f(x)+g(x) = g(x)+f(x)" << endl;
+        vlast1(a, b, n, m,x);
+        cout << "  " << endl;
+
+        cout << "Check the second" << endl;
+        cout << "f(x)*(g(x)*h(x)) = (g(x)*f(x))*h(x)" << endl;
+        vlast2(a, b, c, n, m, k,x);
+        cout << "  " << endl;
+
+        cout << "Check the third" << endl;
+        cout << "f(x)*(g(x)+h(x)) = f(x)*g(x)+f(x)*h(x)" << endl;
+        vlast3(a, b, c, n, m, k,x);
+        cout << "  " << endl;
+
+
+
+
+
+
+
+
+
+    }
+
+    if (choice == 2) {
+
+        cout << "Polynomial a" << endl;
+        for (int i = 0;i < n;i++) {
+            a[i] = rand() % 100 - 50;
+
+        }
+        for (int i = 0;i < n;i++) {
+            cout << a[i] << endl;
+        }
+
+
+
+        cout << "Polynomial b" << endl;
+        for (int i = 0;i < m;i++) {
+            b[i] = rand() % 100 - 50;
+
+        }
+        for (int i = 0;i < m;i++) {
+            cout << b[i] << endl;
+        }
+
+        cout << "Polynomial c" << endl;
+        for (int i = 0;i < k;i++) {
+            c[i] = rand() % 100 - 50;
+
+        }
+        for (int i = 0;i < k;i++) {
+            cout << c[i] << endl;
+        }
+
+        int x;
+        cout << "Enter the x:" << endl;
+        cin >> x;
+
+        cout << "Check the first" << endl;
+        cout << "f(x)+g(x) = g(x)+f(x)" << endl;
+        vlast1(a, b, n, m,x);
+        cout << "  " << endl;
+
+        cout << "Check the second" << endl;
+        cout << "f(x)*(g(x)*h(x)) = (g(x)+f(x))*h(x)" << endl;
+        vlast2(a, b, c, n, m, k,x);
+        cout << "  " << endl;
+
+        cout << "Check the third" << endl;
+        cout << "f(x)*(g(x)+h(x)) = f(x)*g(x)+f(x)*h(x)" << endl;
+        vlast3(a, b, c, n, m, k,x);
+        cout << "  " << endl;
+
+
+
+
+
+    }
+
+}
+
+
+int main() {
+    int chs;
+    setlocale(LC_ALL, "ukr");
+    cout << "Lab 6. Var17. Student Veronika Manoshyna IPZ-11" << endl;
+    while (true) {
+        cout << "Choose the task by press 1 or 2 or 3 on your keyboard:  ";
+        cin >> chs;
+        switch (chs) {
+        case 1:
+            task1();
+            break;
+        case 2:
+            task2();
+            break;
+        case 3:
+            task3();
+            break;
+        }
+
+        cout << "\nContinue?\n 1 - yes\n 0 - no\nYour answer: ";
+        cin >> chs;
+        if (chs == 0)
+        {
+            break;
+            system("cls");
+
+        }
+    }
+    system("pause");
+
+
+}
+                
+            </code>
+        </pre>
+    </details>
+    </div>
+    
+    
+    
+    
+    <div class="content"> 
+        <p><h2 align="center">Виконання програми</h2></p> 
+        <p><h4 align="center">Виконання завдання №1</h4></p>           
+            <img src="laB6/result6.1.png">
+            <p><h4 align="center">Виконання завдання №2</h4></p>                         
+            <img src="laB6/result6.2.png"> 
+            <p><h4 align="center">Виконання завдання №3</h4></p>                         
+            <img src="laB6/result6.3.1.png"> 
+			<img src="laB6/result6.3.2.png"> 			
+    </div>
+
+
+    <div class="content">  
+        <p><h2 align="center">Перевірка достовірності</h2></p>
+        <p><h4 align="center">Перевірка завдання №1</h4></p>         
+        <img src="laB6/перевірка6.1.png">
+		<img src="laB6/перевірка6.1.2.png">
+		<p><h4 align="center">Перевірка завдання №3</h4></p> 
+		<img src="laB6/перевірка6.3.1.png">
+		<img src="laB6/перевірка6.3.2.png">
+		<img src="laB6/перевірка6.3.3.png">
+		<img src="laB6/перевірка6.3.3.1.png">
+    </div>
+    
+                <div class="content">
+                    <p><h2 align="center">Висновок</h2></p>
+                <p>
+                    На цій лабораторній роботі я реалізувала створення
+                    різноманітних програм за допомогою масивів. Опанувала
+                    різні методи створення, сортування масивів та пошуку елементів в них.
+                </p>
+                </div>
+            </div>
+</HTML>
