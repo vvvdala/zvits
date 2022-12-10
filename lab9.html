@@ -1,0 +1,376 @@
+<HTML>
+<HEAD>
+    <title>Лабораторна робота №9</title>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+</HEAD>
+<BODY class="main">
+    
+   <input type="checkbox" id="menu-trigger" class="menu-trigger">
+   <label for="menu-trigger"></label>
+        <div class="menu">
+            <ul class="menu">
+                <li><a class="button" href="main.html">Головна сторінка</a></li>
+                <li><a  class="button" href="lab1.html">Лабораторна робота №1</a></li>
+                <li><a  class="button" href="lab2.html">Лабораторна робота №2</a></li>
+                <li><a  class="button_current" href="lab3.html">Лабораторна робота №3</a></li>
+                <li><a  class="button" href="lab4.html">Лабораторна робота №4</a></li>
+                <li><a  class="button" href="lab5.html">Лабораторна робота №5</a></li>
+                <li><a  class="button" href="lab6.html">Лабораторна робота №6</a></li>
+                <li><a  class="button" href="lab7.html">Лабораторна робота №7</a></li>
+                <li><a  class="button" href="lab8.html">Лабораторна робота №8</a></li>
+                <li><a  class="button" href="lab9.html">Лабораторна робота №9</a></li>
+                <li><a  class="button" href="lab10.html">Лабораторна робота №10</a></li>
+                <li><a  class="button" href="lab11.html">Лабораторна робота №11</a></li>
+                <li><a  class="button" href="IndProject.html">Індивідуальний проект</a></li>
+              </ul>
+            </div>
+    
+    
+    
+    
+    <div class="bodyy">   
+    <div class="content">
+        <p><h2 align="center">Мета роботи</h2></p>            
+<ol>
+<li><p>Ознайомитися з особливостями рядкових типів даних</li></p>
+<li><p>Опанувати технологію застосування рядкових типів даних</li></p>
+<li><p>Навчитися розробляти алгоритми та програми із застосуванням рядкових типів даних</li></p>
+</ol>
+    </div>    
+    
+    
+    
+    <div class="content">
+            
+                <p><h2 align="center">Умова задачі №1</h2></p>
+                <p><h5 align="center"></h5>Увести з клавіатури рядок слів, які відділяються символами пропуску, комами, точками. Слово є послідовністю символів без розділових символів всередині. Передбачити меню для виконання таких дій:
+визначити слова-паліндроми, які однаково читаються справа наліво і навпаки, наприклад, "Noon" та "level". Знайти найбільшу довжину цих слів;
+розбити на склади відповідно до правил перенесення найдовше слово-паліндром;
+з кожного слова на непарній позиції в рядку вилучити голосні та надрукувати їх.
+Надрукувати знайдені слова-паліндроми або відповідні повідомлення у разі їх відсутності, перетворення рядка після вилучення голосних.</p>
+            <img src="laB9/task9.1.png">
+			</div>
+
+
+           
+            
+           
+
+    
+    
+    
+    <div class="content"> 
+        <p><h2 align="center">Аналіз задачі №1</h2></p>            
+<p>
+    Для виконання даного завдання л.р., мені необхідно включити в мій проект бібліотеку string.h для виконання 
+    базових операціх порівняння рядків. Мені необхідно створити масив char* який і міститиме необхідний для обробки рядок. 
+    Для виконання завдання мені небхідно копіювати мій рядок в інші нові, щоб працювати з ними окремо, для першого завдання
+	розділяємо рядок на слова, щоб кожне перевірити паліндроми. Виводимо максимальну кількість букв найдовшого паліндрома.
+	Потім для другого завдання копіюємо найдовше слово-паліндром, перевіряємо кожний символ голосний він чи ні та розділяємо
+	на склади. Для третього завдання знов розділяємо рядок на слова, та з кожнею ітерацією рахуємо на якомі місці знаходиться слово,
+	якщо на непарному - не друкуємо голосні, на парному - виводимо слово без змін.
+</p>
+
+
+</div>
+
+
+
+
+    <div class="content">
+        <p><h2 align="center">Блок-схеми</h2></p>
+        <p><h4 align="center">Блок-схема л.р.</h4></p>
+        <img src="laB9/scheme9.1.png" class="test">   
+		<img src="laB9/scheme9.2.png" class="test"> 
+    </div>
+    
+    
+    
+    
+    <div class="code">
+        <details>
+            <summary>Код програми</summary>
+        <pre>
+            <code>
+               #include <iostream>
+#include <string.h>
+
+
+using namespace std;
+const int max_length= 50 + 1;
+int max_size = 0, currentli_size = 0;
+char string_copy1[max_length];
+bool flag = false;
+
+
+bool is_vowel(char sklady) {
+
+    char a[] = "aeiouy";
+    for (int i = 0;i < strlen(a);i++) {
+        if (sklady == a[i]) return 1;
+     
+        
+    }
+    return 0;
+}
+
+
+
+void sklady() {
+    char sklady_w[max_length];
+   
+    strcpy_s(sklady_w, max_length, string_copy1);
+   
+    int sklady_length = strlen(sklady_w);
+    int j = 1;
+   
+  
+    cout << sklady_w[0];
+        
+        while (j < sklady_length) {
+
+
+
+            if (!(is_vowel(sklady_w[j]))&&is_vowel(sklady_w[j+1])) {
+                cout << sklady_w[j];
+                cout << "-";
+
+            }
+
+            if (!(is_vowel(sklady_w[j])) && !(is_vowel(sklady_w[j + 1])) && is_vowel(sklady_w[j + 2])) {
+                cout << sklady_w[j];
+                cout << "-";
+
+            }
+
+            
+
+            if (is_vowel(sklady_w[j]) && !(is_vowel(sklady_w[j + 1]))) {
+                cout << sklady_w[j];
+
+            }
+
+            
+            if (sklady_w[j + 1] == '\0') {
+                cout << sklady_w[j];
+            }
+
+            j++;
+
+        }
+        cout << endl;
+   
+}
+
+
+
+void palindromes(char word[]) {
+
+   int size_word = strlen(word);
+   char* buff = nullptr;
+   
+  
+   for (int i = 0;i < size_word;i++) {
+     
+
+       if (word[i] == word[size_word - 1 - i]) {
+           currentli_size++;
+
+           flag = true;
+       }
+       
+   }
+
+  
+   
+  
+}
+
+
+
+void seperation_palindromes(char string[],char seperators[]) {
+
+    char* word, * buff=nullptr;
+    char string_copy[max_length];
+   
+    strcpy_s(string_copy, max_length, string);
+    word = strtok_s(string_copy, seperators, &buff);
+       
+    while (word!=nullptr)
+    {
+        palindromes(word);
+        if (currentli_size >= max_size) {
+
+            max_size = currentli_size;
+            currentli_size = 0;
+
+        }
+
+        if (flag && strlen(word) == max_size) {
+            strcpy_s(string_copy1, max_length, word);
+        }
+        word = strtok_s(nullptr, seperators, &buff);
+       
+    }
+
+    if (max_size == 0) {
+
+        cout << "Any palidromes haven't been found" << endl;
+    }else {
+
+        cout << "Size of the max palindrome = " << max_size << endl;
+    }
+    max_size = 0;
+
+}
+
+
+void delete_vowal(char word[]) {
+
+    int size = strlen(word);
+    int a = 0;
+    
+        while (a < size) {
+            if (!(is_vowel(word[a]))) {
+                cout << word[a];
+            }
+            a++;
+        }
+        cout << " ";
+   
+}
+
+void task_c(char string[], char seperators[]) {
+    char* word, * buff = nullptr;
+    char string_copy[max_length];
+    
+
+    strcpy_s(string_copy, max_length, string);
+    word = strtok_s(string_copy, seperators, &buff);
+
+    int count = 1;
+
+    
+    while (word != nullptr)
+    {
+        if (count % 2 != 0) {
+            delete_vowal(word);
+        }
+        else {
+            cout << word<<" ";
+        }
+
+        word = strtok_s(nullptr, seperators, &buff);
+        count++;
+
+    }
+
+
+}
+
+void task1() {
+
+    cout << "==Task 1==" << endl;
+    char string[max_length], seperators[] = " .,";
+    int n;
+
+    cout << "Please,enter your srting\n!Warning, your string can't be more than 50 symbols" << endl;
+    cin.ignore();
+    cin.getline(string,50);
+
+    cout << endl;
+
+    cout << "1)Find palindromes, print the length of the maximum" << endl;
+    cout << "2)Divide the maximum palindrome into syllables" << endl;
+    cout << "3)Remove vowels in words in unpaired positions" << endl;
+    while (true) {
+        cout << "Enter a number from the menu: ";
+        cin >> n;
+
+        cout << endl;
+        switch (n) {
+        case 1:
+            seperation_palindromes(string, seperators);
+            break;
+        case 2:
+            cout << "Max palindrome divided into syllables : ";
+            sklady();
+            break;
+        case 3:
+            cout << "Words in unpaired places without vowels : ";
+            task_c(string, seperators);
+            break;
+        }
+        cout << "\nContinue operations?\n 1 - yes\n 0 - no\nYour answer: ";
+        cin >> n;
+        if (n == 0)
+        {
+            break;
+            system("cls");
+
+        }
+
+    }
+
+}
+
+int main() {
+    int chs;
+    setlocale(LC_ALL, "ukr");
+    cout << "Lab 9. Var17. Student Veronika Manoshyna IPZ-11" << endl;
+    while (true) {
+        cout << "Press 1 on your keyboard to start 1st task:  ";
+        cin >> chs;
+        switch (chs) {
+        case 1:
+            task1();
+            break;
+        }
+
+        cout << "\nContinue?\n 1 - yes\n 0 - no\nYour answer: ";
+        cin >> chs;
+        if (chs == 0)
+        {
+            break;
+            system("cls");
+
+        }
+    }
+    system("pause");
+
+
+}
+
+            </code>
+        </pre>
+    </details>
+    </div>
+    
+    
+    
+    
+    <div class="content"> 
+        <p><h2 align="center">Виконання програми</h2></p> 
+        <p><h4 align="center">Виконання завдання №1</h4></p>           
+            <img src="laB9/result9.1.png">
+            <p></p>                         
+            <img src="laB9/result9.2.png">
+            <p></p>           
+    </div>
+
+
+    <div class="content">  
+        <p><h2 align="center">Перевірка достовірності</h2></p>
+        <p><h4 align="center">Нема чого перевіряти </h4></p>         
+    </div>
+    
+                <div class="content">
+                    <p><h2 align="center">Висновок</h2></p>
+                <p>
+                    На цій лабораторній роботі я працювала з рядками використовуючи звичайні масиви типу char 
+                    та функції обробки рядків з бібліотеки string.h. Опанувала різноманітні методи взаємодії 
+                    рядків між собою.
+                </p>
+                </div>
+            </div>
+</HTML>

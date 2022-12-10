@@ -1,0 +1,363 @@
+<HTML>
+<HEAD>
+    <title>Лабораторна робота №7</title>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+</HEAD>
+<BODY class="main">
+    
+   <input type="checkbox" id="menu-trigger" class="menu-trigger">
+   <label for="menu-trigger"></label>
+        <div class="menu">
+            <ul class="menu">
+                <li><a class="button" href="main.html">Головна сторінка</a></li>
+                <li><a  class="button" href="lab1.html">Лабораторна робота №1</a></li>
+                <li><a  class="button" href="lab2.html">Лабораторна робота №2</a></li>
+                <li><a  class="button_current" href="lab3.html">Лабораторна робота №3</a></li>
+                <li><a  class="button" href="lab4.html">Лабораторна робота №4</a></li>
+                <li><a  class="button" href="lab5.html">Лабораторна робота №5</a></li>
+                <li><a  class="button" href="lab6.html">Лабораторна робота №6</a></li>
+                <li><a  class="button" href="lab7.html">Лабораторна робота №7</a></li>
+                <li><a  class="button" href="lab8.html">Лабораторна робота №8</a></li>
+                <li><a  class="button" href="lab9.html">Лабораторна робота №9</a></li>
+                <li><a  class="button" href="lab10.html">Лабораторна робота №10</a></li>
+                <li><a  class="button" href="lab11.html">Лабораторна робота №11</a></li>
+                <li><a  class="button" href="IndProject.html">Індивідуальний проект</a></li>
+              </ul>
+            </div>
+    
+    
+    
+    
+    <div class="bodyy">   
+    <div class="content">
+        <p><h2 align="center">Мета роботи</h2></p>            
+<ol>
+<li><p>Ознайомитися з особливостями двовимірного масиву</li></p>
+<li><p>Опанувати технологію застосування двовимірних масивів</li></p>
+<li><p>Навчитися розробляти алгоритми та програми із застосуванням двовимірних масивів</li></p>
+</ol>
+    </div>    
+    
+    
+    
+    <div class="content">
+            
+                <p><h2 align="center">Умова задачі</h2></p>
+                <p><h3 align="center">Завдання №1</h3></p>
+                <p><h5 align="center">Створити матрицю, кількість рядків m>3 та кількість стовпців n>3 якої ввести з клавіатури. Передбачити меню вибору способу створення матриці: введення з клавіатури або генерація псевдовипадкових додатніх та від'ємних чисел. За допомогою елементарних перетворень матриці (перестановка місцями будь-яких двох рядків або стовпців матриці; множення на ненульову константу будь-якого рядка або стовпця матриці; додавання до будь-якого рядка чи стовпця матриці іншого рядка чи стовпця) перемістити елемент з найменшим значенням до правого верхнього кута матриці. Вивести на екран матрицю до та після елементаних перетворень, значення найменшого елемента та його індекси. Матриці виводити у табличному вигляді.</h5></p>
+				 <img src="laB7/task7_1.png" class="test">
+            </div>
+           
+
+    
+    
+    
+    <div class="content"> 
+        <p><h2 align="center">Аналіз задачі</h2></p>            
+<p>
+    Для виконання першого завдання необхідно знайти 
+    найменший серед елементів та перенести у правий верхній кут. 
+	Далі мені необхідно розробити алгоритми перенесення рядків і стовпців, та 
+	 множення на ненульову константу будь-якого рядка або стовпця матриці; додавання до будь-якого рядка чи стовпця матриці іншого рядка чи стовпця.
+</p>
+
+
+</div>
+
+
+
+    <div class="content">
+        <p><h2 align="center">Блок-схеми</h2></p>
+        <p><h4 align="center">Блок-схема завдання №1</h4></p>
+        <img src="laB7/scheme7_1.png" class="test">
+        
+    </div>
+    
+    
+    
+    
+    <div class="code">
+        <details>
+            <summary>Код програми</summary>
+        <pre>
+            <code>
+               #include <iostream>
+#include <iomanip>
+
+using namespace std;
+typedef float Matrix[10][10];
+Matrix A, B;
+int row, col,row1,col1;
+int i, j;
+int min_index1, min_index2;
+
+
+void create_matrix(Matrix Mas,int& row,int& col,int choice ) {
+    int rangemin, rangemax;
+    srand(time(NULL));
+    
+    cout << "\nEnter the number of rows:";
+    cin >> row;
+    cout << "\nEnter the number of columns:";
+    cin >> col;
+
+    if (row < 3 && col < 3) {
+        cout << "Not found.Try again";
+    }
+    
+    switch (choice) {
+    case 1:
+        for (i = 0; i < row;i++) {
+            for ( j = 0;j < col;j++) {
+                cin >> Mas[i][j];
+            }
+        }
+
+        break;
+    case 2:
+
+        cout << "\nEnter the begin of range:";
+        cin >> rangemin;
+        cout << "\nEnter the end of range:";
+        cin >> rangemax;
+
+        if (rangemax > rangemin) {
+            for (i = 0; i < row; i++)
+            {
+                for (j = 0; j < col; j++)
+                {
+                    Mas[i][j] = rand() % rangemax + rangemin;
+                }
+
+            }
+        }
+
+
+        break;
+    }
+
+   
+}
+
+void output_matrix(Matrix Mas,int& row,int& col) {
+   
+
+    for ( i = 0;i < row;i++) {
+        for ( j = 0;j < col;j++) {
+            cout << Mas[i][j]<<" ";
+            
+        }
+        cout << endl;
+    }
+
+
+
+}
+
+
+void search_min(Matrix Mas, int& row, int& col) {
+    int min = Mas[0][0];
+   
+
+
+    for ( i = 0;i < row;i++) {
+
+        for ( j = 1;j < col;j++) {
+
+            if (min > Mas[i][j]) {
+                min = Mas[i][j];
+                min_index1 = i;
+                min_index2 = j;
+            }
+        }
+    }
+
+   
+
+
+    cout << "\nOur minimal element of the matrix: " << min << endl;
+    
+    
+   
+}
+
+void newMatrix(Matrix Mas, int& row, int& col, int min_index1, int min_index2) {
+    double tmp;
+
+    for (i = 0;i <col;i++) {
+        tmp = Mas[min_index1][i];
+        Mas[min_index1][i] = Mas[0][i];
+        Mas[0][i] = tmp;
+    }
+
+    for (i = 0;i < row;i++) {
+        tmp = Mas[i][min_index2];
+        Mas[i][min_index2] = Mas[i][col-1];
+        Mas[i][col-1] = tmp;
+    }
+
+    for (i = 0;i < row;i++) {
+        for (j = 0;j < col;j++) {
+            cout << Mas[i][j] << " ";
+
+        }
+        cout << endl;
+    }
+}
+
+void mnz_sum(Matrix Mas,int&row, int&col) {
+    int chs, con, index,index1, choice;
+    while (true) {
+        cout << "What do you want to do with the matrix? Multiplication(1) or dodavanya(2)?" << endl;
+        cin >> chs;
+    
+        switch (chs) {
+        case 1:
+            cout << "\nCol(1) or row(2)";
+            cin >> choice;
+            cout<<"\nEnter which col or row you want multiplicate: ";
+            cin >> index;
+            cout << "\nNumber:";
+            cin >> con;
+
+            if (choice == 1) {
+                for (i = 0;i < row;i++) {
+                    Mas[i][index]=Mas[i][index] * con;
+                }
+                output_matrix(Mas, row, col);
+            }
+            else if (choice == 2) {
+                for (i = 0;i < col;i++) {
+                    Mas[index][i] = Mas[index][i] * con;
+                }
+                output_matrix(Mas, row, col);
+            }
+            break;
+
+        case 2:
+            cout << "\nCol(1) or row(2)";
+            cin >> choice;
+            cout << "\nEnter which col or row you want to sum: ";
+            cin >> index;
+            cin >> index1;
+
+            if (choice == 1) {
+                for (i = 0;i < row;i++) {
+                    Mas[i][index] += Mas[i][index1];
+                   
+                }
+                output_matrix(Mas, row, col);
+            }
+            else if (choice == 2) {
+                for (i = 0;i < col;i++) {
+                    Mas[index][i] += Mas[index1][i];
+                    
+                }
+                output_matrix(Mas, row, col);
+            }
+
+
+            break;
+        }
+        cout << "\nContinue?\n 1 - yes\n 0 - no\nYour answer: ";
+        cin >> chs;
+        if (chs == 0)
+        {
+            break;
+            system("cls");
+
+        }
+
+    }
+
+
+
+
+}
+
+
+
+void task1() {
+    int choice;
+    cout << "Do you want to enter numbers themselves(1) or randomly generated ones?(2)";
+    cin >>choice;
+    create_matrix(A, row, col,choice);
+    cout << "\nOur matrix:" << endl;
+    output_matrix(A, row, col);
+    search_min(A, row, col);
+    
+   
+   
+    cout << "You want to move the minimum element by multiplying by a number and by adding rows and columns(1), or by rearranging rows and columns(2)" << endl;
+    cin >> choice;
+    switch (choice) {
+    case 1:
+        mnz_sum(A, row, col);
+        break;
+    case 2:
+        cout << "\nMatrix where the minimum element is in the upper right corner:" << endl;
+        newMatrix(A, row, col, min_index1, min_index2);
+        break;
+    }
+
+
+}
+
+
+
+
+
+
+int main() {
+    int chs;
+    setlocale(LC_ALL, "ukr");
+    cout << "Lab 7. Var17. Student Veronika Manoshyna IPZ-11" << endl;
+    while (true) {
+        cout << "Choose the task by press 1 or 2 on your keyboard:  ";
+        cin >> chs;
+        switch (chs) {
+        case 1:
+            task1();
+            break;
+        }
+
+        cout << "\nContinue?\n 1 - yes\n 0 - no\nYour answer: ";
+        cin >> chs;
+        if (chs == 0)
+        {
+            break;
+            system("cls");
+
+        }
+    }
+    system("pause");
+}
+            </code>
+        </pre>
+    </details>
+    </div>
+    
+    
+    
+    
+    <div class="content"> 
+        <p><h2 align="center">Виконання програми</h2></p> 
+        <p><h4 align="center">Виконання завдання №1</h4></p>           
+            <img src="laB7/result7_1.png">
+			 <img src="laB7/result7_2.png">
+			  <img src="laB7/result7_3.png">
+                    
+    </div>
+
+
+    
+    
+                <div class="content">
+                    <p><h2 align="center">Висновок</h2></p>
+                <p>
+                    На цій лабораторній роботі я навчилася по-різному редагувати двовимирні масиви, робити
+					деякі елементарні перетворення матриць з вищої математики.
+                </p>
+                </div>
+            </div>
+</HTML>

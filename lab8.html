@@ -1,0 +1,269 @@
+<HTML>
+<HEAD>
+    <title>Лабораторна робота №8</title>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+</HEAD>
+<BODY class="main">
+    
+   <input type="checkbox" id="menu-trigger" class="menu-trigger">
+   <label for="menu-trigger"></label>
+        <div class="menu">
+            <ul class="menu">
+               <li><a class="button" href="main.html">Головна сторінка</a></li>
+                <li><a  class="button" href="lab1.html">Лабораторна робота №1</a></li>
+                <li><a  class="button" href="lab2.html">Лабораторна робота №2</a></li>
+                <li><a  class="button_current" href="lab3.html">Лабораторна робота №3</a></li>
+                <li><a  class="button" href="lab4.html">Лабораторна робота №4</a></li>
+                <li><a  class="button" href="lab5.html">Лабораторна робота №5</a></li>
+                <li><a  class="button" href="lab6.html">Лабораторна робота №6</a></li>
+                <li><a  class="button" href="lab7.html">Лабораторна робота №7</a></li>
+                <li><a  class="button" href="lab8.html">Лабораторна робота №8</a></li>
+                <li><a  class="button" href="lab9.html">Лабораторна робота №9</a></li>
+                <li><a  class="button" href="lab10.html">Лабораторна робота №10</a></li>
+                <li><a  class="button" href="lab11.html">Лабораторна робота №11</a></li>
+                <li><a  class="button" href="IndProject.html">Індивідуальний проект</a></li>
+              </ul>
+            </div>
+    
+    
+    
+    
+    <div class="bodyy">   
+    <div class="content">
+        <p><h2 align="center">Мета роботи</h2></p>            
+<ol>
+<li><p>Ознайомитися з особливостями покажчиків та </li></p>
+<li><p>Опанувати технологію застосування покажчиків</li></p>
+</ol>
+    </div>    
+    
+    
+    
+    <div class="content">
+            
+                <p><h2 align="center">Умова задачі</h2></p>
+                <p><h5 align="center">Розробити програму, команди меню якої передбачають такі дії:
+Створити одновимірний масив п’ятикутних чисел, задавши їх кількість з клавіатури. П’ятикутні числа складають послідовність 1, 5, 12, 22, 35, 51,…. Формула для обчислення n-го п’ятикутного числа .
+Вивести створений масив на екран.
+Виконати такі операції:
+замінити значення елементів на парних позиціях на їх подвоєне значення;
+знайти середнє арифметичне чисел масиву;
+поділити масив на два рівних по кількості елементів. Значення останнього елемента першого масиву зробити першим елементом другого масиву.
+Вивести на екран усі перетворення вхідного масиву</h5></p>
+<img src="laB8/task8.1.png">
+            </div>
+           
+
+    
+    
+    
+    <div class="content"> 
+        <p><h2 align="center">Аналіз задачі</h2></p>            
+<p>
+    Для виконання першої умови задачі вводимо послідовні числа 1,2..., під час цього
+	за допомогою формули п'ятикутних чисел перетворюємо ці елементи. Для другої умови
+	просто виводимо одновимірний масив із п'ятикутних чисел. Для умови третьої
+	за доп. цикла for множимо елементи на парних місцях на два, рахуємо середнє арифметичне
+	всіх елементів, потім створюємо два динамічних масива з розміром N/2, та за доп. циклів for
+	присвоюмо значення нашого основного масива двум іншим, а першому елементу другого масива
+	останній елемент першого.
+</p>
+
+
+</div>
+
+
+
+    <div class="content">
+        <p><h2 align="center">Блок-схеми</h2></p>
+        <p><h4 align="center">Блок-схема завдання №1</h4></p>
+        <img src="laB8/scheme8.1.png">   
+    </div>
+    
+    
+    
+    
+    <div class="code">
+        <details>
+            <summary>Код програми</summary>
+        <pre>
+            <code>
+                #include <iostream>
+
+using namespace std;
+int SIZE;
+int* arr = new int[SIZE];
+float sum = 0;
+
+
+void output_mas(int *arr, int N) {
+    cout << "| ";
+    for (int i = 0;i < N;i++) {
+        cout << *(arr+i)<<" |";
+        
+    }
+    cout << endl;
+}
+
+void task_a(int *arr, int N) {//подвоюємо елементи на парних місцях
+    for (int i = 1;i < N;i += 2) {
+
+        *(arr+i)*= 2;
+        
+    }
+
+
+
+}
+
+
+
+void task_b(int *arr, int N) {//рахуємо середнє арефметичне
+   
+    for (int i = 0;i < N;i++) {
+
+        sum += *(arr+i);
+    }
+    sum=sum / N;
+
+}
+
+void task_c(int* arr, int N) {//розділяємо масив на два, останній елемент
+    //1 масива - перший елемент другого
+
+    int SIZE1 = N / 2;
+   
+    int* arr1 = new int [SIZE1];
+    int* arr2 = new int[SIZE1];
+
+    cout << "=1st array=" << endl;
+    cout << "| ";
+    for (int i = 0;i < SIZE1; i++) {
+        
+        *(arr1 + i) = *(arr + i);
+        cout << *(arr1 + i) << " |";
+    }
+
+    cout << "\n";
+    cout << "=2nd array=" << endl;
+    cout << "| ";
+    for (int i = SIZE1;i < N; i++) {
+
+       
+        *(arr2 + i) = *(arr + i);
+        
+        *(arr2 + SIZE1) = *(arr + (SIZE1 - 1));
+        
+        cout << *(arr2+i) << " |";
+    }
+
+    
+    delete[] arr1, arr2;
+
+}
+
+void input_mas(int *arr,int N) {//ств. масив п'ятикутних чисел
+    cout << "Enter the elements of array:" << endl;
+    for (int i = 0;i < N;i++) {
+
+        cin >> *(arr + i);
+        *(arr + i) = (*(arr + i) * (*(arr + i) * 3 - 1)) / 2;
+
+    }
+}
+
+
+
+int main() {
+    int chs;
+	cout << "Lab 8. Var17. Student Veronika Manoshyna IPZ-11" << endl;
+
+	cout << "1)Create an array of pentagonal numbers" << endl;
+	cout << "2)Output an array" << endl;
+	cout << "3)Perform some operations on an array and output new arrays" << endl;
+	
+
+    while (true) {
+        cout << "Enter a number from the menu: ";
+        cin >> chs;
+        if (chs == 1) {
+            cout << "Enter the size of array:";
+            cin >> SIZE;
+            if (SIZE % 2 != 0) {//ввести можна тільки парне число, бо масив
+                //потрібно буде розділити на два рівних масива
+                cout << "Try again!The number is odd." << endl;
+                system("cls");
+            }
+            input_mas(arr, SIZE);
+            
+        }
+
+        if (chs == 2) {
+            
+           output_mas(arr, SIZE);
+
+        }
+        if (chs == 3) {
+            task_a(arr, SIZE);
+            cout << "==Task a==" << endl;
+            output_mas(arr, SIZE);
+
+            cout << "==Task b==" << endl;
+            task_b(arr, SIZE);
+            cout << "Sum = "<<sum<<endl;
+
+            cout << "==Task c==" << endl;
+            task_c(arr, SIZE);
+
+           
+
+
+           
+        }
+
+
+        cout << "\nContinue?\n 1 - yes\n 0 - no\nYour answer: ";
+        cin >> chs;
+        if (chs == 0)
+        {
+            break;
+            system("cls");
+
+        }
+    }
+    delete[] arr;
+    system("pause");
+}
+            </code>
+        </pre>
+    </details>
+    </div>
+    
+    
+    
+    
+    <div class="content"> 
+        <p><h2 align="center">Виконання програми</h2></p> 
+        <p><h4 align="center">Виконання завдання №1</h4></p>           
+            <img src="laB8/result8.1.png">
+            <p></p>                         
+            <img src="laB8/result8.2.png">
+            <p></p>           
+    </div>
+
+
+    <div class="content">  
+        <p><h2 align="center">Перевірка достовірності</h2></p>
+        <p><h4 align="center">Перевірка завдання </h4></p>         
+        <img src="laB8/перевірка8.1.png">
+    </div>
+    
+                <div class="content">
+                    <p><h2 align="center">Висновок</h2></p>
+                <p>
+                    В цій роботі я дізналася як працювати з масивами показників, використовувати динамічні масиви,
+					видаляти сміття після них та розробляти алгоритми з масивами показників.
+                </p>
+                </div>
+            </div>
+</HTML>
